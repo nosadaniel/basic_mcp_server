@@ -48,10 +48,51 @@ To run this example:
 
 ## Running the Example
 
-To run this example:
-1. Install the required dependencies from `pyproject.toml`
-2. Run `python main.py` to start the server
-3. The server will run on port 8080 using SSE transport
+To run this example, follow these steps:
+
+1. Install uv package manager:
+   ```bash
+   # On macOS/Linux
+   curl -fsSL https://uv.rs/install.sh | bash
+   
+   # On Windows
+   winget install uv
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   uv venv .venv
+   source .venv/bin/activate  # On Unix/macOS
+   # or
+   .venv\Scripts\activate     # On Windows
+   ```
+
+2. Install the required dependencies:
+   ```bash
+   uv pip install -r pyproject.toml
+   ```
+
+2. Run the server using mcp dev:
+   ```bash
+   mcp dev main.py
+   ```
+
+3. The server will start and listen on:
+   - Host: localhost (127.0.0.1)
+   - Port: 8080
+   - Transport: Server-Sent Events (SSE)
+
+4. Test the server using tiny agent client:
+   ```bash
+   tiny-agents run agent.json
+   ```
+
+   The server implements three endpoints:
+   - Tool: `get_weather(location: str)`
+   - Resource: `weather://{location}`
+   - Prompt: `weather_report(location: str)`
+
+5. To stop the server, press Ctrl+C in the terminal
 
 ## Note
 
